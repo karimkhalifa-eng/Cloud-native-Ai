@@ -1,0 +1,28 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAgentReadOnlyAccess",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::capstone-agent-knowledge-base",
+        "arn:aws:s3:::capstone-agent-knowledge-base/*"
+      ]
+    },
+    {
+      "Sid": "ExplicitDenyWriteAndAdmin",
+      "Effect": "Deny",
+      "Action": [
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "iam:*",
+        "ec2:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

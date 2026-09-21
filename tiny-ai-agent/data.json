@@ -1,0 +1,8 @@
+{
+  "system_status": "active",
+  "version": "1.0.0",
+  "environment": "local_dev",
+  "max_retries": 3,
+  "agent_name": "Cloud-Native Support Agent",
+  "allowed_tools": ["calculator", "json_lookup", "get_greeting"]
+}
