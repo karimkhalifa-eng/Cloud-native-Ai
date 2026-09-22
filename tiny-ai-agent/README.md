@@ -24,3 +24,13 @@ python agent.py calculator "12 * 4"
 
 # Test JSON Lookup
 python agent.py json_lookup status
+
+┌──────────────────────────────────────────────────────────  ┐
+│                   DOCKERFILE CHECKLIST                     │
+├──────────────────────────────────────────────────────────  ┤
+│ 1. Base Image   ➜ Minimal & trusted (e.g., -slim)         │
+│ 2. Security Context ➜ Non-root user execution (appuser)   │
+│ 3. Layer Hygiene ➜ Clean paths, combined RUNs, no cache   │
+│ 4. Environment  ➜ Unbuffered logs & zero hardcoded secrets│
+│ 5. Process Exec ➜ Exec form CMD ["python", "..."]         │
+└──────────────────────────────────────────────────────────  ┘
