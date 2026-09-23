@@ -1,7 +1,10 @@
-import sys # (for command-line argument parsing)
+import sys
+
+from click import argument # (for command-line argument parsing)
 from tools import TOOL_MANIFEST, get_greeting
 from fastapi import FastAPI
 from pydantic import BaseModel
+from database import save_request
 
 app = FastAPI()
 
@@ -44,6 +47,8 @@ def run_agent(tool_name: str, argument: str):
     observation = tool_func(argument)
 
     print(f"[Agent Loop] Execution Result: {observation}")
+
+    save_request(argument, tool_name, observation)
 
     return observation
 
