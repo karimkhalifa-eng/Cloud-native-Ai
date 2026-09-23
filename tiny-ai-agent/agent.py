@@ -1,5 +1,32 @@
 import sys # (for command-line argument parsing)
 from tools import TOOL_MANIFEST, get_greeting
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class AgentRequest(BaseModel):
+    message: str
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+@app.post("/agent")
+def agent_endpoint(request: AgentRequest):
+    parts = request.message.split(" ", 1)
+
+    if len(parts) < 2:
+        return {"error": "Use: tool_name argument"}
+
+    tool_name = parts[0]
+    argument = parts[1]
+
+    result = run_agent(tool_name, argument)
+
+    return {
+        "result": result
+    }
 
 
 def run_agent(tool_name: str, argument: str):
@@ -18,6 +45,7 @@ def run_agent(tool_name: str, argument: str):
 
     print(f"[Agent Loop] Execution Result: {observation}")
 
+    return observation
 
 if __name__ == "__main__":
 
@@ -51,3 +79,4 @@ if __name__ == "__main__":
         argument = parts[1]
 
         run_agent(tool_name, argument)
+
