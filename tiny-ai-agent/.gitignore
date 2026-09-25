@@ -1,8 +1,10 @@
 __pycache__/
 .venv/
 *.pyc
+agent.db
 # Terraform
 .terraform/
 *.tfstate
 *.tfstate.*
+
 
