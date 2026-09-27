@@ -16,7 +16,7 @@ jobs:
               python-version: "3.11"
 
          - name: Install dependencies
-           run: pip install -r requirements.txt     
+           run: pip install -r tiny-ai-agent/requirements.txt     
 
          - name: Test
            run: python -c "print('CI test passed')"
