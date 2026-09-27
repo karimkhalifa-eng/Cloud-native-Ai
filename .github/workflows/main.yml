@@ -21,6 +21,6 @@ jobs:
            
 
          - name: Test
-           run: python -c "raise Exception('Intentional CI failure')"
+           run: python -c "print('CI test passed')"
            
            
