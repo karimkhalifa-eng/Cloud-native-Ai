@@ -13,14 +13,11 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "dev_environment" {
-  bucket_prefix = "tiny-ai-agent-${var.environment}-"
+module "s3_bucket" {
+  source = "./modules/s3-bucket"
 
+  bucket_prefix = "tiny-ai-agent-dev-"
   force_destroy = true
-
-  tags = {
-    Project     = "Tiny-AI-Agent"
-    Environment = var.environment
-    ManagedBy   = "Terraform"
-  }
+  environment  = var.environment
+  bucket_name  = "tiny-ai-agent-${var.environment}"
 }

@@ -1,5 +1,11 @@
-output "environment_name" {
-  description = "The current environment name"
-  value       = var.environment
+output "bucket_id" {
+  value = module.s3_bucket.bucket_id
 }
 
+output "bucket_arn" {
+  value = module.s3_bucket.bucket_arn
+}
+
+output "bucket_name" {
+  value = module.s3_bucket.bucket_name
+}
