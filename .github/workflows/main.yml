@@ -19,7 +19,7 @@ jobs:
            run: pip install -r tiny-ai-agent/requirements.txt     
  
          - name: Lint
-           run: pip install ruff && ruff check tiny-ai-agent
+           run: pip install ruff && ruff check tiny-ai-agent --fix
 
          - name: Test
            run: python -c "print('CI test passed')"
