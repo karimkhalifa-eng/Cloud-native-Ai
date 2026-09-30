@@ -17,9 +17,14 @@ jobs:
 
          - name: Install dependencies
            run: pip install -r tiny-ai-agent/requirements.txt     
+ 
+         - name: Lint
+           run: pip install ruff && ruff check tiny-ai-agent
 
          - name: Test
            run: python -c "print('CI test passed')"
            
          - name: Build Docker image
            run: docker build -t tiny-ai-agent ./tiny-ai-agent
+
+     
