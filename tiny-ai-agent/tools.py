@@ -1,6 +1,7 @@
-import ast #(for safe evaluation of expressions)
-import json #(for JSON database lookup)
-import operator #(for safe arithmetic operations)
+import ast  #(for safe evaluation of expressions)
+import json  #(for JSON database lookup)
+import operator  #(for safe arithmetic operations)
+
 
 # 1. Greeting Function
 def get_greeting(name: str) -> str:
@@ -27,8 +28,8 @@ def calculator(expression: str) -> str:
                 return n.value
             raise ValueError("Invalid mathematical operation.")
         return f"Result: {_eval(node)}"
-    except Exception as e:
-        return f"Calculator error: {str(e)}"
+    except (ValueError, TypeError, ZeroDivisionError) as e:
+        return f"Calculator error: {e!s}"
 
 # 3. Local JSON Lookup Function
 def json_lookup(key: str, filepath: str = "data.json") -> str:
@@ -40,8 +41,8 @@ def json_lookup(key: str, filepath: str = "data.json") -> str:
         if val is not None:
             return f"Found '{key}': {val}"
         return f"Key '{key}' not found in database."
-    except Exception as e:
-        return f"Database lookup error: {str(e)}"
+    except (json.JSONDecodeError, FileNotFoundError) as e:
+        return f"Database lookup error: {e!s}"
 
 # 4. Safe Tool Dispatch Table (Defined AFTER functions)
 TOOL_MANIFEST = {

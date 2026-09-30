@@ -1,1 +1,8 @@
 agent.db
+__pycache__/
+.venv/
+*.pyc
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*

@@ -1,10 +1,8 @@
-import sys
-
-from click import argument # (for command-line argument parsing)
-from tools import TOOL_MANIFEST, get_greeting
+from click import argument
+from database import save_request
 from fastapi import FastAPI
 from pydantic import BaseModel
-from database import save_request
+from tools import TOOL_MANIFEST, get_greeting
 
 app = FastAPI()
 
